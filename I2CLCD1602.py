@@ -14,6 +14,9 @@ if not API_KEY:
     print("Warning: API_KEY not found")
 LJLJ = 'LJLJ'
 
+def get_time_now():     # get system time
+    return datetime.now().strftime('    %H:%M:%S')
+
 def get_next_flight():
     try:
         url = f"https://airlabs.co/api/v9/flights?api_key={API_KEY}&arr_icao={LJLJ}&dep_icao={LJLJ}&status=en-route,landed&_fields=flight_number,status,updated&_view=array&limit=10"
