@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-########################################################################
-# Filename    : I2CLCD1602.py
-# Description : Use the LCD display data
-# Author      : freenove
-# modification: 2023/05/15
-########################################################################
+
 import smbus
 from time import sleep, strftime
 from datetime import datetime
@@ -22,14 +17,15 @@ def get_time_now():     # get system time
     
 def loop():
     lcd1602.init_lcd()
-    count = 0
     while(True):
         lcd1602.clear()
-        lcd1602.write(0, 0, 'CPU: ' + get_cpu_temp() )# display CPU temperature
+        lcd1602.write(0, 0, "Test predolgega testa 1 2 3 4 5 6 7 8 9 10")# display CPU temperature
         lcd1602.write(0, 1, get_time_now() )   # display the time
         sleep(1)
+
 def destroy():
     lcd1602.clear()
+
 if __name__ == '__main__':
     print ('Program is starting ... ')
     try:
