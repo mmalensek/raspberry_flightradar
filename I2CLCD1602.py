@@ -14,7 +14,8 @@ if not API_KEY:
     print("Warning: API_KEY not found")
 LJLJ = 'EDDM' # change later to LJLJ
 
-def get_time_now():     # get system time
+# get system time
+def get_time_now():
     return datetime.now().strftime('    %H:%M:%S')
 
 def get_next_flight():
@@ -22,8 +23,9 @@ def get_next_flight():
         url = f"https://airlabs.co/api/v9/flights?api_key={API_KEY}&arr_icao={LJLJ}&dep_icao={LJLJ}&status=en-route,landed&_fields=flight_number,status,updated&_view=array&limit=10"
         resp = requests.get(url, timeout=5)
         data = resp.json().get('response', [])
+        print(data)
         if len(data) > 0:
-            # Sort by updated desc (most recent first), take first non-landed or nearest
+            # sort by updated desc (most recent first), take first non-landed or nearest
             data.sort(key=lambda x: x.get('updated', 0), reverse=True)
             flight = data[0]
             num = flight.get('flight_number', 'UNK')
@@ -33,7 +35,7 @@ def get_next_flight():
     except:
         return "API error"
 
-# Display refreshes every 5 min to save API calls (300/day max ~9000/month)
+# display refreshes every 5 min to save API calls ~9000/month
 FLIGHT_UPDATE_INTERVAL = 300  # seconds
 last_update = 0
 
@@ -48,8 +50,8 @@ def loop():
             last_update = now.timestamp()
             print("Requesting data from API ... ")
             lcd1602.clear()
-            lcd1602.write(0, 0, get_next_flight())  # Next landing/departing
-            lcd1602.write(0, 1, get_time_now() )    # Time
+            lcd1602.write(0, 0, get_next_flight())  # next landing/departing
+            lcd1602.write(0, 1, get_time_now() )    # time
 
 def destroy():
     lcd1602.clear()
