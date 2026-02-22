@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import os
-import smbus
 from time import sleep, strftime
 from datetime import datetime
 import requests
