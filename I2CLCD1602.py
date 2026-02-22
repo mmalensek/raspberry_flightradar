@@ -41,19 +41,15 @@ def loop():
     lcd1602.init_lcd()
     while(True):
         
-        print("Requesting data from API ... ")
-        lcd1602.clear()
-        lcd1602.write(0, 0, get_next_flight())  # Next landing/departing
-        lcd1602.write(0, 1, get_time_now() )    # Time
-        
-        sleep(1)
-        
         global last_update
         
         now = datetime.now()
         if (now - datetime.fromtimestamp(last_update)).total_seconds() > FLIGHT_UPDATE_INTERVAL:
             last_update = now.timestamp()
-            # Force refresh (handled in get_next_flight)
+            print("Requesting data from API ... ")
+            lcd1602.clear()
+            lcd1602.write(0, 0, get_next_flight())  # Next landing/departing
+            lcd1602.write(0, 1, get_time_now() )    # Time
 
 def destroy():
     lcd1602.clear()
