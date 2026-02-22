@@ -14,9 +14,7 @@ load_dotenv()
 API_KEY = os.getenv("API_KEY")
 if not API_KEY:
     print("Warning: API_KEY not found")
-LJLJ = 'EDDM' # change later to LJLJ
-
-print(API_KEY)
+LJLJ = 'LJLJ' # change later to LJLJ
 
 # get system time
 def get_time_now():
