@@ -4,11 +4,13 @@ import os
 import smbus
 from time import sleep, strftime
 from datetime import datetime
-import requests  # Add this import
+import requests
 from LCD1602 import CharLCD1602
+from dotenv import load_dotenv
 
 lcd1602 = CharLCD1602()
 
+load_dotenv()
 API_KEY = os.getenv("API_KEY")
 if not API_KEY:
     print("Warning: API_KEY not found")
