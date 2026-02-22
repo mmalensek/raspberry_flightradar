@@ -2,6 +2,7 @@
 
 import os
 from time import sleep, strftime
+import smbus
 from datetime import datetime
 import requests
 from LCD1602 import CharLCD1602
