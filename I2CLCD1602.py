@@ -23,6 +23,7 @@ def get_next_flight():
         url = f"https://airlabs.co/api/v9/flights?api_key={API_KEY}&arr_icao={LJLJ}&dep_icao={LJLJ}&status=en-route,landed&_fields=flight_number,status,updated&_view=array&limit=10"
         resp = requests.get(url, timeout=5)
         data = resp.json().get('response', [])
+        print(resp)
         print(data)
         if len(data) > 0:
             # sort by updated desc (most recent first), take first non-landed or nearest
