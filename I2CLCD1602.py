@@ -16,6 +16,8 @@ if not API_KEY:
     print("Warning: API_KEY not found")
 LJLJ = 'EDDM' # change later to LJLJ
 
+print(API_KEY)
+
 # get system time
 def get_time_now():
     return datetime.now().strftime('    %H:%M:%S')
