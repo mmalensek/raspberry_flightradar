@@ -12,7 +12,7 @@ lcd1602 = CharLCD1602()
 API_KEY = os.getenv("API_KEY")
 if not API_KEY:
     print("Warning: API_KEY not found")
-LJLJ = 'LJLJ'
+LJLJ = 'EDDM' # change later to LJLJ
 
 def get_time_now():     # get system time
     return datetime.now().strftime('    %H:%M:%S')
